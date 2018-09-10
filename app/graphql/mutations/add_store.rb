@@ -1,11 +1,11 @@
 module Mutations
   class AddStore < GraphQL::Schema::Mutation
-    argument :name, String, required: true
+    argument :store, Types::StoreInputType, required: true
 
     field :store, Types::StoreType, null: false 
 
-    def resolve(name:)
-      store = Store.create({ name: name })
+    def resolve(store:)
+      store = Store.create(store.to_h)
       store.save!
 
       {store: store}

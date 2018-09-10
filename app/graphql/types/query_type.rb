@@ -1,6 +1,6 @@
 module Types 
   class QueryType < GraphQL::Schema::Object
-    field :store, StoreType, null: false do
+    field :store, StoreType, null: true do
       description "Find a store by ID"
       argument :id, ID, required: true
     end
@@ -10,8 +10,8 @@ module Types
     end
 
     field :fishes_from_store, [FishType], null: false do 
-      argument :name, String, required: true
       description 'Find fish from a specific store'
+      argument :name, String, required: true
     end
 
     def fishes_from_store(name:)

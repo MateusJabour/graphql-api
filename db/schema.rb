@@ -13,19 +13,19 @@
 ActiveRecord::Schema.define(version: 2018_09_09_003554) do
 
   create_table "fish", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "name"
-    t.integer "price"
+    t.string "name", null: false
+    t.integer "price", null: false
     t.string "description"
-    t.boolean "status"
-    t.bigint "store_id"
-    t.string "image"
+    t.bigint "store_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["store_id"], name: "index_fish_on_store_id"
   end
 
   create_table "stores", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "name"
+    t.string "name", null: false
+    t.string "address", null: false
+    t.string "number", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
